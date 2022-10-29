@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "771088859653",
+    "firebase_url": "https://expoter-a07aa-default-rtdb.firebaseio.com",
+    "project_id": "expoter-a07aa",
+    "storage_bucket": "expoter-a07aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771088859653:android:8069f64dc0fbc70a65926c",
+        "android_client_info": {
+          "package_name": "com.mobilapp.expoter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771088859653-sskedmfvehhtp55t2cn2pctv48p18195.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnfhA14ssQfAKtDk5rIGdXlY-FZWnsWpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771088859653-sskedmfvehhtp55t2cn2pctv48p18195.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
