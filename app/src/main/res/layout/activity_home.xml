@@ -78,10 +78,25 @@
             tools:layout_editor_absoluteY="119dp" />
 
         <Button
-            android:id="@+id/profileBtn"
+            android:id="@+id/addProductBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cartBtn"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Add Product"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="75dp"
+            tools:layout_editor_absoluteY="119dp" />
+
+        <Button
+            android:id="@+id/profileBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addProductBtn"
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:paddingTop="20dp"

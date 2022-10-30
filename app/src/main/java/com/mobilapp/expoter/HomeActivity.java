@@ -14,7 +14,7 @@ import com.mobilapp.expoter.Controller.SessionManager;
 public class HomeActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
-    Button allProductListBtn, MyProductsBtn,cartBtn,profileBtn,logoutBtn ;
+    Button allProductListBtn, MyProductsBtn,cartBtn,profileBtn,logoutBtn,addProductBtn ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         allProductListBtn = (Button) findViewById(R.id.allProductListBtn);
         MyProductsBtn = (Button) findViewById(R.id.MyProductsBtn);
         cartBtn = (Button) findViewById(R.id.cartBtn);
+        addProductBtn = (Button) findViewById(R.id.addProductBtn);
         profileBtn = (Button) findViewById(R.id.profileBtn);
         logoutBtn = (Button) findViewById(R.id.logoutBtn);
 
@@ -52,6 +53,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("","cartBtn");
 
+            }
+        });
+
+        addProductBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("","addProductBtn");
+                Intent intent = new Intent(HomeActivity.this, AddProductActivity.class);
+                startActivity(intent);
             }
         });
 
