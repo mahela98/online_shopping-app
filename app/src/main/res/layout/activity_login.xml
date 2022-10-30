@@ -28,7 +28,7 @@
             android:textSize="35dp" />
 
         <EditText
-            android:id="@+id/usernameLI"
+            android:id="@+id/MobileNbrLI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/loginText"
@@ -38,7 +38,7 @@
             android:layout_marginBottom="10dp"
             android:background="#30ffffff "
             android:drawablePadding="20dp"
-            android:hint="Username"
+            android:hint="Mobile Number"
             android:padding="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
@@ -48,7 +48,7 @@
             android:id="@+id/passwordLI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/usernameLI"
+            android:layout_below="@+id/MobileNbrLI"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"

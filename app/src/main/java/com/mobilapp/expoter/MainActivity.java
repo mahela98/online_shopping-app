@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.mobilapp.expoter.Controller.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
+
+    SessionManager sessionManager;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -19,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.checkLogin();
+
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
 
 

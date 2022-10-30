@@ -14,9 +14,12 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mobilapp.expoter.Controller.DBHelper;
+import com.mobilapp.expoter.Controller.SessionManager;
 import com.mobilapp.expoter.models.UserModel;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    SessionManager sessionManager;
 
     private EditText EmailInp, UsernameInp, PasswordInp, RePasswordInp, MobileNumber;
     MaterialButton createAccountBtn;
@@ -28,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        sessionManager = new SessionManager(getApplicationContext());
+
 
         createAccountBtn = (MaterialButton) findViewById(R.id.createAccountBtn);
         UsernameInp = (EditText) findViewById(R.id.register_username_input);
@@ -64,14 +69,13 @@ public class RegisterActivity extends AppCompatActivity {
                UserModel user = new UserModel(username, email, mobileNumber, password);
 
                if (DBHelper.createUser(user, reference)) {
+                   sessionManager.createLoginSession(mobileNumber, password);
+
                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                    startActivity(intent);
-                //   Toast.makeText(this, "Account Created", Toast.LENGTH_SHORT).show();
-                   Log.d("","Account Created");
+                   Toast.makeText(RegisterActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
                } else {
-                   Log.d("","Account Creation Failed");
-
-                   //  Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+                   Toast.makeText(RegisterActivity.this, "Account Creation Failed", Toast.LENGTH_SHORT).show();
                }
            }
 

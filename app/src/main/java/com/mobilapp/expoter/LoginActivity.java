@@ -17,18 +17,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.mobilapp.expoter.Controller.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText UsernameInp, PasswordInp;
+    private EditText PhoneInp, PasswordInp;
+    SessionManager sessionManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sessionManager = new SessionManager(getApplicationContext());
+
+
         MaterialButton loginBtn_loginPage = (MaterialButton) findViewById(R.id.loginBtn);
-        UsernameInp = (EditText) findViewById(R.id.usernameLI);
+        PhoneInp = (EditText) findViewById(R.id.MobileNbrLI);
         PasswordInp = (EditText) findViewById(R.id.passwordLI);
         TextView registerPageLink = (TextView) findViewById(R.id.registerPageLink);
 
@@ -44,41 +50,41 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn_loginPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = UsernameInp.getText().toString();
+                String phone = PhoneInp.getText().toString();
                 String password = PasswordInp.getText().toString();
-                loginUser(username, password);
+                loginUser(phone, password);
             }
         });
 
 
     }
 
-    public void loginUser(String userEnteredUsername, String userEnteredPassword) {
+    public void loginUser(String userEnteredPhone, String userEnteredPassword) {
         DatabaseReference reference = FirebaseDatabase
                 .getInstance("https://expoter-a07aa-default-rtdb.firebaseio.com/")
                 .getReference("users");
 
-        Log.d("username", userEnteredUsername);
-        Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
+      //  Log.d("username", userEnteredUsername);
+        Query checkUser = reference.orderByChild("phone").equalTo(userEnteredPhone);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
-                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    String passwordFromDB = dataSnapshot.child(userEnteredPhone).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
+
+                        sessionManager.createLoginSession(userEnteredPhone, userEnteredPassword);
 
                         Log.d("intent", "user exits");
 
-                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
-                        String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
-                        String phoneFromDB = dataSnapshot.child(userEnteredUsername).child("phone").getValue(String.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredPhone).child("username").getValue(String.class);
+                  //      String emailFromDB = dataSnapshot.child(userEnteredPhone).child("email").getValue(String.class);
+                   //     String phoneFromDB = dataSnapshot.child(userEnteredPhone).child("phone").getValue(String.class);
 
-                        Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
-                        intent.putExtra("username", usernameFromDB);
-                        intent.putExtra("email", emailFromDB);
-                        intent.putExtra("phone", phoneFromDB);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
 
 
                         Log.d("intent", usernameFromDB);
