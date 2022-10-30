@@ -60,18 +60,20 @@ public class RegisterActivity extends AppCompatActivity {
                 String mobileNumber = MobileNumber.getText().toString();
 
 
-                UserModel user = new UserModel(username, email, mobileNumber, password);
+           if (password.equals(re_password)){
+               UserModel user = new UserModel(username, email, mobileNumber, password);
 
-                if (DBHelper.createUser(user, reference)) {
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    // Toast.makeText(this, "Account Created", Toast.LENGTH_SHORT).show();
-                    Log.d("","Account Created");
-                } else {
-                    Log.d("","Account Creation Failed");
+               if (DBHelper.createUser(user, reference)) {
+                   Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                   startActivity(intent);
+                //   Toast.makeText(this, "Account Created", Toast.LENGTH_SHORT).show();
+                   Log.d("","Account Created");
+               } else {
+                   Log.d("","Account Creation Failed");
 
-                    //  Toast.makeText(this,"",Toast.LENGTH_LONG).show();
-                }
+                   //  Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+               }
+           }
 
 
             }

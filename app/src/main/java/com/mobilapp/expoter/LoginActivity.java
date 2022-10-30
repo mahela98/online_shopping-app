@@ -32,14 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         PasswordInp = (EditText) findViewById(R.id.passwordLI);
         TextView registerPageLink = (TextView) findViewById(R.id.registerPageLink);
 
-
-
-
         registerPageLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);            }
+                startActivity(intent);
+            }
         });
 
 
@@ -48,11 +46,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = UsernameInp.getText().toString();
                 String password = PasswordInp.getText().toString();
-                loginUser(username,password);
-
+                loginUser(username, password);
             }
         });
-
 
 
     }
@@ -62,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 .getInstance("https://expoter-a07aa-default-rtdb.firebaseio.com/")
                 .getReference("users");
 
-        Log.d("username",userEnteredUsername);
+        Log.d("username", userEnteredUsername);
         Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -73,15 +69,21 @@ public class LoginActivity extends AppCompatActivity {
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
                     if (passwordFromDB.equals(userEnteredPassword)) {
 
-                        String usernameFromDB = dataSnapshot.child("username").getValue(String.class);
-                        String emailFromDB = dataSnapshot.child("email").getValue(String.class);
-                        String phoneFromDB = dataSnapshot.child("phone").getValue(String.class);
+                        Log.d("intent", "user exits");
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
+                        String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+                        String phoneFromDB = dataSnapshot.child(userEnteredUsername).child("phone").getValue(String.class);
+
+                        Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
                         intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("phone", phoneFromDB);
-                        intent.putExtra("password", passwordFromDB);
+
+
+                        Log.d("intent", usernameFromDB);
+
+                        // intent.putExtra("password", passwordFromDB);
                         startActivity(intent);
 
                     } else {
