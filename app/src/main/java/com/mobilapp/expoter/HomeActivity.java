@@ -2,6 +2,7 @@ package com.mobilapp.expoter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("","profileBtn");
+                Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
+                startActivity(intent);
 
             }
         });
