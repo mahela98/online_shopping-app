@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/singleCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp">
+
+        <!-- Title, secondary and supporting text -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="40sp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            />
+        <TextView
+            android:id="@+id/secondText"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="tagsdsdsd"
+
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            />
+        <TextView
+            android:id="@+id/supportText"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nmaesadf"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mobilapp.expoter.Controller.SessionManager;
 
 public class HomeActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
     Button allProductListBtn, MyProductsBtn,cartBtn,profileBtn,logoutBtn,addProductBtn ;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
+
 
 
         allProductListBtn = (Button) findViewById(R.id.allProductListBtn);
@@ -37,6 +41,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("","allProductListBtn");
+
+                Intent intent = new Intent(HomeActivity.this, AllProductsActivity.class);
+                startActivity(intent);
             }
         });
 
